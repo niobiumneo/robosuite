@@ -68,6 +68,14 @@ robosuite.models.grippers.null\_gripper module
    :undoc-members:
    :show-inheritance:
 
+robosuite.models.grippers.pal\_pro\_gripper module
+--------------------------------------------------
+
+.. automodule:: robosuite.models.grippers.pal_pro_gripper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 robosuite.models.grippers.panda\_gripper module
 -----------------------------------------------
 

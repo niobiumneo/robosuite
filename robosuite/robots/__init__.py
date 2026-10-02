@@ -24,6 +24,7 @@ ROBOT_CLASS_MAPPING = {
     "SpotWithArmFloating": LeggedRobot,
     "PandaOmron": WheeledRobot,
     "Tiago": WheeledRobot,
+    "TiagoProRight": WheeledRobot,
     "GR1": LeggedRobot,
     "GR1FixedLowerBody": LeggedRobot,
     "GR1ArmsOnly": LeggedRobot,

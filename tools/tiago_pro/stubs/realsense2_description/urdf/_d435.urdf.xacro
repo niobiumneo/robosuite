@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- STUB of realsense2_description/urdf/_d4xx*.urdf.xacro. Frame structure follows realsense-ros
+     (link, depth/infra1/infra2/color frames + optical frames); numeric offsets UNVERIFIED. No mesh. -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="_rs_stub" params="parent *origin name:=camera use_nominal_extrinsics:=false add_plug:=false use_mesh:=false cam_depth_py:=0.0175">
+    <xacro:property name="rs_M_PI" value="3.1415926535897931"/>
+    <joint name="${name}_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.072"/>
+        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 ${-cam_depth_py} 0" rpy="0 0 0"/>
+        <geometry><box size="0.02505 0.090 0.025"/></geometry>
+      </visual>
+    </link>
+    <joint name="${name}_depth_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${name}_link"/><child link="${name}_depth_frame"/>
+    </joint>
+    <link name="${name}_depth_frame"/>
+    <joint name="${name}_depth_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-rs_M_PI/2} 0 ${-rs_M_PI/2}"/>
+      <parent link="${name}_depth_frame"/><child link="${name}_depth_optical_frame"/>
+    </joint>
+    <link name="${name}_depth_optical_frame"/>
+    <joint name="${name}_infra1_joint" type="fixed">
+      <origin xyz="0 0.0 0" rpy="0 0 0"/>
+      <parent link="${name}_link"/><child link="${name}_infra1_frame"/>
+    </joint>
+    <link name="${name}_infra1_frame"/>
+    <joint name="${name}_infra1_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-rs_M_PI/2} 0 ${-rs_M_PI/2}"/>
+      <parent link="${name}_infra1_frame"/><child link="${name}_infra1_optical_frame"/>
+    </joint>
+    <link name="${name}_infra1_optical_frame"/>
+    <joint name="${name}_infra2_joint" type="fixed">
+      <origin xyz="0 -0.050 0" rpy="0 0 0"/>
+      <parent link="${name}_link"/><child link="${name}_infra2_frame"/>
+    </joint>
+    <link name="${name}_infra2_frame"/>
+    <joint name="${name}_infra2_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-rs_M_PI/2} 0 ${-rs_M_PI/2}"/>
+      <parent link="${name}_infra2_frame"/><child link="${name}_infra2_optical_frame"/>
+    </joint>
+    <link name="${name}_infra2_optical_frame"/>
+    <joint name="${name}_color_joint" type="fixed">
+      <origin xyz="0 0.015 0" rpy="0 0 0"/>
+      <parent link="${name}_link"/><child link="${name}_color_frame"/>
+    </joint>
+    <link name="${name}_color_frame"/>
+    <joint name="${name}_color_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-rs_M_PI/2} 0 ${-rs_M_PI/2}"/>
+      <parent link="${name}_color_frame"/><child link="${name}_color_optical_frame"/>
+    </joint>
+    <link name="${name}_color_optical_frame"/>
+  </xacro:macro>
+
+  <xacro:macro name="sensor_d435" params="parent *origin name:=camera use_nominal_extrinsics:=false add_plug:=false use_mesh:=false">
+    <xacro:_rs_stub parent="${parent}" name="${name}" use_nominal_extrinsics="${use_nominal_extrinsics}" add_plug="${add_plug}" use_mesh="${use_mesh}">
+      <xacro:insert_block name="origin"/>
+    </xacro:_rs_stub>
+  </xacro:macro>
+</robot>

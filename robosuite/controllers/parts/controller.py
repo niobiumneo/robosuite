@@ -224,7 +224,10 @@ class Controller(object, metaclass=abc.ABCMeta):
             self.joint_vel = np.array(self.sim.data.qvel[self.qvel_index])
 
             mass_matrix = np.ndarray(shape=(self.sim.model.nv, self.sim.model.nv), dtype=np.float64, order="C")
-            mujoco.mj_fullM(self.sim.model._model, mass_matrix, self.sim.data.qM)
+            if hasattr(self.sim.data._data, "qM"):  # older mujoco: mj_fullM(m, dst, qM)
+                mujoco.mj_fullM(self.sim.model._model, mass_matrix, self.sim.data.qM)
+            else:  # newer mujoco (qM no longer exposed): mj_fullM(m, d, dst)
+                mujoco.mj_fullM(self.sim.model._model, self.sim.data._data, mass_matrix)
             mass_matrix = np.reshape(mass_matrix, (len(self.sim.data.qvel), len(self.sim.data.qvel)))
             self.mass_matrix = mass_matrix[self.qvel_index, :][:, self.qvel_index]
 

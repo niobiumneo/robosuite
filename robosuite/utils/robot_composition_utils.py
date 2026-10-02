@@ -44,11 +44,11 @@ def create_composite_robot(
         )
     if not base:
         base = REGISTERED_ROBOTS[robot]().default_base
-    if robot in ["Tiago", "GR1"] and base:
+    if robot in ["Tiago", "GR1", "TiagoProRight"] and base:
         ROBOSUITE_DEFAULT_LOGGER.warning(f"Defined custom base when using {robot} robot. Ignoring base.")
         if robot in ["Tiago"]:
             base = "NullMobileBase"
-        elif robot == "GR1":
+        elif robot in ["GR1", "TiagoProRight"]:
             base = "NoActuationBase"
 
     target_type = get_target_type(base)

@@ -100,6 +100,14 @@ robosuite.models.robots.manipulators.spot\_arm module
    :undoc-members:
    :show-inheritance:
 
+robosuite.models.robots.manipulators.tiago\_pro\_right\_robot module
+-------------------------------------------------------------------
+
+.. automodule:: robosuite.models.robots.manipulators.tiago_pro_right_robot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 robosuite.models.robots.manipulators.tiago\_robot module
 --------------------------------------------------------
 

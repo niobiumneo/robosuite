@@ -2,3 +2,5 @@ recursive-include robosuite/controllers/config/ *
 recursive-include robosuite/demos *
 recursive-include robosuite/models/assets/ *
 recursive-include robosuite/scripts *
+# developer tooling that generates robosuite/models/assets/robots/tiago_pro (not part of the package)
+prune tools

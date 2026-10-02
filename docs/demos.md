@@ -141,7 +141,7 @@ Furthermore, please choose environment specifics with the following arguments:
 
 * `--environment`: Task to perform, e.g., `Lift`, `TwoArmPegInHole`, `NutAssembly`, etc.
 
-* `--robots`: Robot(s) with which to perform the task, e.g., `Tiago`, `Panda`, `GR1`, `Sawyer`, etc. Note that the environments include sanity checks, such that a `TwoArm...` environment will not accept configurations with a single, one-armed robot.
+* `--robots`: Robot(s) with which to perform the task, e.g., `Tiago`, `TiagoProRight`, `Panda`, `GR1`, `Sawyer`, etc. Note that the environments include sanity checks, such that a `TwoArm...` environment will not accept configurations with a single, one-armed robot.
 
 * `--config`: Exclusively applicable and only should be specified for `TwoArm...` environments. Specifies the robot
         configuration desired for the task when two robots are inputted. Options are {`parallel` and `opposed`}
@@ -163,6 +163,10 @@ $ python demo_device_control.py --environment PickPlaceCan --robots Sawyer
 * For two-arm bimanual environment:
 ```
 $ python demo_device_control.py --environment TwoArmLift --robots Tiago
+```
+* For the single-arm TIAGo Pro (right arm, PAL Pro gripper; 7-D action like Panda):
+```
+$ python demo_device_control.py --environment NutAssemblySquare --robots TiagoProRight
 ```
 * For two-arm multi single-arm robot environment:
 ```

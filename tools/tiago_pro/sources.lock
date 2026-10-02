@@ -1,0 +1,11 @@
+# sources.lock: inputs of the generated TIAGo Pro assets (written by convert_tiago_pro.py --update-lock)
+# <name> <git sha> <url>   |   tool <name> <version>
+tiago_pro_robot 59eff25559b0f071ac5cf6d3c4c72c2e33b8951a https://github.com/pal-robotics/tiago_pro_robot
+pal_sea_arm 78b544fd2d96b8edbc2472e68f653ea5cce15423 https://github.com/pal-robotics/pal_sea_arm
+omni_base_robot 251ecc4cf57ed1870e84dcc135be917676e318f2 https://github.com/pal-robotics/omni_base_robot
+tiago_pro_head_robot c9ea3291f0001fd40f40770d4eed9bacd03d889d https://github.com/pal-robotics/tiago_pro_head_robot
+pal_urdf_utils 171a1fe521e42eaf2b6cff71d5339551feaa0191 https://github.com/pal-robotics/pal_urdf_utils
+pal_pro_gripper ed9445716b9534b6d387d88eaf88f0bcb781b5cd https://github.com/pal-robotics/pal_pro_gripper
+tool mujoco 3.5.0
+tool xacro 2.1.1
+tool lxml 6.1.3.0

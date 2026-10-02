@@ -1,0 +1,43 @@
+<mujoco model="tiago_pro">
+  <include file="tiago_pro.xml"/>
+  <actuator>
+    <velocity name="wheel_front_right_joint_velocity" joint="wheel_front_right_joint" ctrlrange="-100 100" kv="500"/>
+    <velocity name="wheel_front_left_joint_velocity" joint="wheel_front_left_joint" ctrlrange="-100 100" kv="500"/>
+    <velocity name="wheel_rear_right_joint_velocity" joint="wheel_rear_right_joint" ctrlrange="-100 100" kv="500"/>
+    <velocity name="wheel_rear_left_joint_velocity" joint="wheel_rear_left_joint" ctrlrange="-100 100" kv="500"/>
+    <position name="torso_lift_joint_position" joint="torso_lift_joint" ctrlrange="0 0.35" kp="50000"/>
+    <position name="head_1_joint_position" joint="head_1_joint" ctrlrange="-1.309 1.309" kp="2000"/>
+    <position name="head_2_joint_position" joint="head_2_joint" ctrlrange="-1.0472 0.34907" kp="2000"/>
+    <position name="arm_left_1_joint_position" joint="arm_left_1_joint" ctrlrange="-0.523599 4.71239" kp="1000"
+      kv="50"/>
+    <position name="arm_left_2_joint_position" joint="arm_left_2_joint" ctrlrange="-2.44346 1.13446" kp="1000" kv="60"/>
+    <position name="arm_left_3_joint_position" joint="arm_left_3_joint" ctrlrange="-2.61799 2.61799" kp="1000" kv="50"/>
+    <position name="arm_left_4_joint_position" joint="arm_left_4_joint" ctrlrange="-2.44346 1.13446" kp="500" kv="20"/>
+    <position name="arm_left_5_joint_position" joint="arm_left_5_joint" ctrlrange="-3.66519 1.5708" kp="1000" kv="20"/>
+    <position name="arm_left_6_joint_position" joint="arm_left_6_joint" ctrlrange="-1.88496 3.00197" kp="1000" kv="20"/>
+    <position name="arm_left_7_joint_position" joint="arm_left_7_joint" ctrlrange="-2.44346 2.44346" kp="500" kv="20"/>
+    <position name="gripper_left_finger_joint_position" joint="gripper_left_finger_joint" ctrlrange="0.0 0.07"
+      kp="100"/>
+    <position name="arm_right_1_joint_position" joint="arm_right_1_joint" ctrlrange="-4.71239 0.523599" kp="1000"
+      kv="50"/>
+    <position name="arm_right_2_joint_position" joint="arm_right_2_joint" ctrlrange="-2.44346 1.13446" kp="1000"
+      kv="60"/>
+    <position name="arm_right_3_joint_position" joint="arm_right_3_joint" ctrlrange="-2.61799 2.61799" kp="1000"
+      kv="50"/>
+    <position name="arm_right_4_joint_position" joint="arm_right_4_joint" ctrlrange="-2.44346 1.13446" kp="500"
+      kv="20"/>
+    <position name="arm_right_5_joint_position" joint="arm_right_5_joint" ctrlrange="-1.5708 3.66519" kp="1000"
+      kv="20"/>
+    <position name="arm_right_6_joint_position" joint="arm_right_6_joint" ctrlrange="-1.88496 3.00197" kp="1000"
+      kv="20"/>
+    <position name="arm_right_7_joint_position" joint="arm_right_7_joint" ctrlrange="-2.44346 2.44346" kp="500"
+      kv="20"/>
+    <position name="gripper_right_finger_joint_position" joint="gripper_right_finger_joint" ctrlrange="0.0 0.07"
+      kp="100"/>
+  </actuator>
+  <keyframe>
+    <key name="home"
+      qpos="0 0 0.002 1 0 0 0 0 0 0 0 0.1 0 0 0.36 -1.83 0.47 -2.35 0 -1.2 0 0.07 -0.5796 0.5796 -0.5796 0.0154 -0.5796 0.5796 -0.5796 -0.36 -1.83 -0.47 -2.35 0 -1.2 0 0.07 -0.5796 0.5796 -0.5796 0.0154 -0.5796 0.5796 -0.5796"
+      ctrl="0 0 0 0 0.1 0 0 0.36 -1.83 0.47 -2.35 0 -1.2 0 0.07 -0.36 -1.83 -0.47 -2.35 0 -1.2 0 0.07"/>
+  </keyframe>
+</mujoco>

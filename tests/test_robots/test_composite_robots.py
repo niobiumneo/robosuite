@@ -18,7 +18,7 @@ from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 ROBOSUITE_DEFAULT_LOGGER.setLevel(logging.ERROR)
 
-TEST_ROBOTS = ["Baxter", "IIWA", "Jaco", "Kinova3", "Panda", "Sawyer", "UR5e", "Tiago", "SpotArm", "GR1"]
+TEST_ROBOTS = ["Baxter", "IIWA", "Jaco", "Kinova3", "Panda", "Sawyer", "UR5e", "Tiago", "SpotArm", "GR1", "TiagoProRight"]
 TEST_BASES = [
     "RethinkMount",
     "RethinkMinimalMount",
@@ -74,7 +74,7 @@ def create_and_test_env(
 @pytest.mark.parametrize("base", TEST_BASES)
 def test_composite_robot_base_combinations(robot, base):
     if is_robosuite_robot(robot):
-        if robot in ["Tiago", "GR1", "SpotArm"]:
+        if robot in ["Tiago", "GR1", "SpotArm", "TiagoProRight"]:
             pytest.skip(f"Skipping {robot} for now since it we typically do not attach it to another base.")
         elif base in ["NullMobileBase", "NoActuationBase", "Spot", "SpotFloating"]:
             pytest.skip(f"Skipping {base} for now since comopsite robots do not use {base}.")
@@ -90,7 +90,7 @@ def test_composite_robot_gripper_combinations(robot, gripper):
     if is_robosuite_robot(robot):
         if robot in ["Tiago"]:
             base = "NullMobileBase"
-        elif robot == "GR1":
+        elif robot in ["GR1", "TiagoProRight"]:
             base = "NoActuationBase"
         else:
             base = "RethinkMount"

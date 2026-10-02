@@ -115,6 +115,17 @@ Manipulators
      - - **DoF:** 20
        - **Default Gripper:** Robotiq85Gripper
        - **Default Base:** NullMobileBase
+   * - **TiagoProRight**
+     - (no image)
+     - - **DoF:** 7 (right arm of the PAL Robotics TIAGo Pro; single-arm API, 7-D action with the gripper)
+       - **Default Gripper:** PalProGripper
+       - **Default Base:** NoActuationBase
+       - **Notes:** base, wheels, torso, head and left arm are frozen (baked into the generated
+         ``robot_right.xml``); observation keys and sensor names are identical to Panda's
+         (``robot0_eef_pos``, ``robot0_gripper_qpos``, ``gripper0_right_force_ee``, ...). The model and the
+         menagerie-style package ``robots/tiago_pro/pal_tiago_pro`` are generated from PAL's xacro by
+         ``tools/tiago_pro/convert_tiago_pro.py`` (Apache-2.0 derived assets, see ``robots/tiago_pro/README.md``).
+         With ``Wipe`` the forced ``WipingGripper`` has no DoF, so the action space is 6-D there.
 
 Grippers
 --------
@@ -141,6 +152,11 @@ Grippers
           :width: 90%
           :align: center
      - - **DoF:** 1 (3 for dexterous version)
+   * - **PAL Pro Gripper**
+     - (no image)
+     - - **DoF:** 1 (8 joints: one commanded prismatic joint, 0 = closed, 0.07 m = open, plus 7 mimic joints; action +1 closes)
+       - PAL Robotics TIAGo Pro gripper, generated from PAL's description; carries the wrist
+         ``force_ee`` / ``torque_ee`` sensors on the gripper base
    * - **Panda Gripper**
      - .. image:: ../images/models/panda_gripper.png
           :width: 90%

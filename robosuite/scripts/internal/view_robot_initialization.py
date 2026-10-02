@@ -4,11 +4,17 @@ import numpy as np
 
 import robosuite as suite
 from robosuite.controllers import load_composite_controller_config
+from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
 from robosuite.robots import ROBOT_CLASS_MAPPING
 from robosuite.wrappers import VisualizationWrapper
 
 
 def bimanual_check(robot):
+    # Registered robots declare their arm layout (e.g. the single-arm "TiagoProRight" must not be matched by the
+    # substring "Tiago"); the name list below is only the fallback for robots that are not registered here.
+    robot_cls = REGISTERED_ROBOTS.get(robot)
+    if robot_cls is not None and getattr(robot_cls, "arms", None) is not None:
+        return len(robot_cls.arms) > 1
     bimanual_robots = ["Baxter", "Tiago", "GR1", "G1", "H1", "PR2", "Yumi", "Aloha"]
     for br in bimanual_robots:
         if br in robot:

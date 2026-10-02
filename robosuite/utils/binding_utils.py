@@ -522,7 +522,7 @@ class MjModel(metaclass=_MjModelMeta):
         elif joint_type == mujoco.mjtJoint.mjJNT_BALL:
             ndim = 4
         else:
-            assert joint_type in (mujoco.mjtJoint.mjJNT_HINGE, mujoco.mjtJoint.mjJNT_SLIDE)
+            assert int(joint_type) in (int(mujoco.mjtJoint.mjJNT_HINGE), int(mujoco.mjtJoint.mjJNT_SLIDE))
             ndim = 1
 
         if ndim == 1:
@@ -547,7 +547,7 @@ class MjModel(metaclass=_MjModelMeta):
         elif joint_type == mujoco.mjtJoint.mjJNT_BALL:
             ndim = 3
         else:
-            assert joint_type in (mujoco.mjtJoint.mjJNT_HINGE, mujoco.mjtJoint.mjJNT_SLIDE)
+            assert int(joint_type) in (int(mujoco.mjtJoint.mjJNT_HINGE), int(mujoco.mjtJoint.mjJNT_SLIDE))
             ndim = 1
 
         if ndim == 1:
@@ -1101,7 +1101,13 @@ class MjSim:
 
     def step2(self):
         """Step2 (after actions are set)."""
-        mujoco.mj_step2(self.model._model, self.data._data)
+        data = self.data._data
+        # MuJoCo >= 3.4 evaluates the inverse-dynamics quantities that acceleration-stage sensors (force / torque, ...)
+        # read lazily and keeps the "already computed" flag set across mj_step1/mj_step2, so those sensors stay at their
+        # last mj_forward value (e.g. the reset-time reading) under lite_physics stepping. mj_step() clears it itself.
+        if hasattr(data, "flg_rnepost"):
+            data.flg_rnepost = 0
+        mujoco.mj_step2(self.model._model, data)
 
     def render(
         self,
